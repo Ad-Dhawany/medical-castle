@@ -1,0 +1,40 @@
+.asterisk{
+    right: auto;
+    left: 15px;
+}
+.show-pass {
+    right: auto;
+    left: -10%;
+}
+.pass-stat-msg {
+    right: auto;
+    left: 12%;
+}
+.notifications, .notifications[data-bs-popper]{
+    right: auto;
+    left: 20%;
+}
+.notif-footer {
+    margin-left: 0;
+    margin-right: 0.8em;
+}
+@media (min-width: 600px){
+    .fake-placeholder{
+        font-size: 1rem !important;
+        left: auto !important;
+        right: 17% !important;
+    }
+    .fake-placeholder.focus{
+        left: auto !important;
+        right: 70% !important;
+    }
+}
+.fake-placeholder{
+    left: auto;
+    right: 20%;
+    top: 15%;
+}
+.fake-placeholder.focus{
+    left: auto;
+    right: 70%;
+}

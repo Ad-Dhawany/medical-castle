@@ -1,0 +1,29 @@
+/*********************************************** */
+   var sidebarWidth = $('.sidebar-costum').innerWidth();
+   var clicksCounter = 0;
+   /*$(".sidebar-toggler").css({'left':sidebarWidth});*/
+   function sidebarCanvas(counter = 1 , toggler = ".sidebar-toggler"){
+    sidebarWidth = (counter == 0) ? 60 : sidebarWidth;
+        if($(toggler).hasClass('is-visible')){
+            $(toggler).parent().css('width','16.833333%');
+            // $(toggler).css("left", sidebarWidth);
+            $('body').css("padding-left", sidebarWidth);
+            $("a.nav-link span").addClass("d-sm-inline"); // toggle sidebar texts display to show text
+            $(".sidebar-costum ul.nav").addClass("align-items-sm-start").parent().addClass("align-items-sm-start"); // to align items start (left) in nav-ul into slidebar
+        }else{
+            $(toggler).parent().css('width','60px');
+            // $(toggler).css("left", sidebarWidth);
+            $('body').css("padding-left", sidebarWidth);
+            $("a.nav-link span").removeClass("d-sm-inline"); // toggle sidebar texts display to hide text
+            $(".sidebar-costum ul.nav").removeClass("align-items-sm-start").parent().removeClass("align-items-sm-start"); // to align items centerd in nav-ul into slidebar
+        }
+        //sideLinkText();
+    }
+    $('.sidebar-costum .sidebar-toggler').click(()=>{ // side bar toggler btn
+        $('.sidebar-toggler').toggleClass('is-visible');
+        if(clicksCounter == 0){sidebarWidth = 0.16833 * $('body').width();}
+        sidebarCanvas();
+        sidebarWidth = $('.sidebar-costum').innerWidth();
+        clicksCounter++;
+    });
+    /*******************************/

@@ -1,0 +1,30 @@
+<?php
+    session_start();
+    $pageTitle = 'Items';
+    $dir = "../";
+    if(!isset($_SESSION['username']) || !isset($_SESSION['userID'])){
+        header("location: ../");
+        exit();
+    }
+        include $dir."init.php";
+        ?>
+        <script>var pageTitle = "<?php echo langs('MEMBER') ?>" ;</script>
+        <?php
+        $do = isset($_GET['do']) ? $_GET['do'] : 'manage';
+        if($do == 'manage'){
+            //Start Manage page
+        }elseif($do == 'edit'){
+            //Start Edit page
+        }elseif($do == 'update'){
+            //Start Update methodology
+        }elseif($do == 'add'){
+            //Start Edit page
+        }elseif($do == 'insert'){
+            //Start Insert methodology
+        }elseif($do == 'delete'){
+            //start delete page
+        }elseif($do == 'activate'){
+            //start activate page
+
+        }
+    include $dir. $tempsP. "footer.php";

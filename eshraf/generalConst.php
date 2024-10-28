@@ -1,0 +1,61 @@
+<?php
+const BASIC_ADDRES = "http://localhost/medicalCastle" ;/* $_SERVER['SERVER_NAME'] */
+const BASIC_ROOT = "C:/xampp/htdocs/localhost/medicalCastle" ;/* $_SERVER['SERVER_NAME'] */
+const permissionsCONST =["COSTUMER", "EMPLOYEE", "RESPONSIBLE", "ADMIN"];
+const costGroupID = 0;
+const TOP_MAX_DISC_RATIO = 15; /*لمنع نسبة التخفيض من تجاوز 15% في حال تم التحايل على قيمة أقصى نسبة تخفيض مسموحة في قاعدة البيانات */
+const PROCSTATUS = ['CANCELED', 'OPEN', 'SAVED', 'WAI RES', 'WAI CON', 'CONFIRMED', 'DONE'];
+const RECEIVE_ORDER_TITLE = ['3'=>'COS SUB NEW ORD', '4'=>'COS SUB NEW PRO'];
+// const LOG_LIST = ["deleteMember"=> 1];
+const BROAD_RECIPIENTS_ID = array(
+                                "costumers" => 0,
+                                "allAdmins" => -1
+                            );
+const MUNICIPALS_TOWNS = array(
+                            "WADI AL-SHAATTIE" => ["ASHKEDDA","QIRA","BRACK","AZ-ZOWAYYA","TAMZAWA","AQAR","MAHROGA","AL-GORDHA","GOTTA","BERGUN","WINZREEK","AZ-ZAHRAA","AL-MANSORA","TEMESSAN","IDRI"],
+                            "SABHA" => ["HAJARA","HAI ABDULKAFI","HAI AL-FATAH","AL-MAHDEIYA","SOCKARAH","AL-JADEED","AL-GORDAH","AL-THANAWIYA","AL-MANSHIYA","AN-NASSERIYA","AT-TAIYORY","GHODWA"],
+                            "AL-BAWANIES" => ["AZ-ZIEGHEN","TEMENHENT","SAMNO"],
+                            "MORZUQ GOVERNORATE" => ["TRAGHEN","FONGUL","JIEZAW","HEJ HAJIL","MORZUQ","WADI OTBA","AQAR WADI-OTBA","TASAWA WADI-OTBA"],
+                            "WADI AL-HAYAH" => ["AL-ABIAD","AR-RUQAIBA","BENT BAYYAH","JARMA","AL-GHAREFA","AL-HATTIYA","AWBARI"],
+                            "WESTREN GOVERNORATE" => ["UM AL-ARANEB","ZOWIELA","MAJDUL","TAMESSAH","AL-QATTRON"],
+                            "GHAT" => ["AL-OWAINAT","TAHALA","GHAT","AL-BERKET"],
+                            "SHOWAREF & AL-QARYAT" => ["AL-SHOWAREF","AL-QARYA AL-SHARQIYA","AL-QARYA AL-GHARBIYA","TUBGAH"],
+                            "AL-JOFRA" => ["SOKENAH","HOON","WADDAN","AL-FOQAHAA"],
+                            "TRIPOLI" => [],
+                            "BENGHAZI" => [],
+                            "MISURATA" => [],
+                            "ZELITEN" => [],
+                            "AL-KHOMS" => [],
+                            "MUSALLAT" => [],
+                            "TARHUNA" => [],
+                            "AZ-ZAWIA" => [],
+                            "SABRATA" => [],
+                            "SERMAN" => [],
+                            "ZOWARA" => [],
+                            "NALUT" => [],
+                            "AL-HARABA" => [],
+                            "KABAW" => [],
+                            "GHADAMIS" => [],
+                            "TIJIE" => [],
+                            "AZ-ZENTAN" => [],
+                            "YEFREN" => [],
+                            "AL-ASABA" => [],
+                            "GHARYAN" => [],
+                            "AL-ORBAN" => [],
+                            "MIZDAH" => [],
+                            "NESMA" => [],
+                            "BANI-WALID" => [],
+                            "SIRT" => [],
+                            "BEN-JAWWAD" => [],
+                            "AJDABIA" => [],
+                            "AL-WAHAT" => [],
+                            "AL-KOFRAH" => [],
+                            "AL-MARJ" => [],
+                            "AL-BAYDHA" => [],
+                            "DARNAH" => [],
+                            "TUBRUQ" => [],
+                            "AL-JAGHBOUB" => [],
+                        );
+$municipalsArray = array_keys(MUNICIPALS_TOWNS) ;
+// const MUNICIPALS = $municipals;
+$arAlphabet = "ءإاأبتثجحخدذرزسشصضطظعغفقكلمنهويةى";

@@ -1,0 +1,231 @@
+<main class="main-order-container overflow-hidden p-2" data-page-title="<?php echo lang('NEW ORD') ?>" data-body-width="560px" >
+                <div class="row m-2">
+                    <section class="order-invoice-page-header">
+                        <h2 class="text-center my-2"><?php echo lang("NEW PUR INV") ?></h2>
+                    </section>
+                    <section class="col-10 offset-1 my-3 p-3 form-container-ver1">
+                        <!-- <div class="me-3">
+
+                            <hr>
+                        </div> -->
+                        <form action="#" class="item-search form">
+                            <!-- <h5 class="mb-3">Search for a specific item:</h5> -->
+                            <div class="d-flex">
+                                <div class="form-group form-group-lg col-4 m-1">
+                                    <label class="col-lg-4 control-label"> Item NO. </label>
+                                    <div class="input-field col-11">
+                                        <input id="search-by-num" type="text" class="form-control search-input" placeholder="">
+                                    </div>
+                                    <div id="item-num-results" class="search-results-container fs-8" style="display: none;">
+                                    <table class="search-results m-0 table table-bordered text-center">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th><?php echo lang("ITE NO") ?></th>
+                                                <th><?php echo lang("ITE NAM") ?></th>
+                                                <th><?php echo lang("ITE PRI") ?></th>
+                                                <th title="<?php echo langTXT("EXP ITE PRI AFT") ?>"><?php echo lang("DIS PRI") ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="result-items">
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-lg col-8 m-1">
+                                    <label class="col-lg-4 control-label"> Item Name </label>
+                                    <div class="input-field col-12 pe-3">
+                                        <input id="search-by-name" type="text" name="" class="form-control search-input" placeholder="">
+                                    </div>
+                                    <div id="item-name-results" class="search-results-container fs-8" style="display: none;">
+                                    <table class="search-results m-0 table table-bordered text-center">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th><?php echo lang("ITE NO") ?></th>
+                                                <th><?php echo lang("ITE NAM") ?></th>
+                                                <th><?php echo lang("ITE PRI") ?></th>
+                                                <th id='disc-price-th' title="<?php echo langTXT("EXP ITE PRI AFT") ?>"><?php echo lang("DIS PRI") ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="result-items">
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex my-2">
+                                <div class="form-group form-group-lg col-md-4 m-1">
+                                    <label class="col-lg-4 control-label point-none"> <?php echo lang("ITE PRI") ?> </label>
+                                    <div class="input-field col-11">
+                                        <input id="itemPrice" type="text" class="form-control search-input point-none" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-lg col-md-4 m-1">
+                                    <label class="col-lg-4 control-label"> <?php echo lang("QUANTITY") ?> </label>
+                                    <div class="input-field col-11">
+                                        <input id="itemQty" type="text" class="form-control search-input" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-lg col-md-4 pe-4 m-1">
+                                    <label for="itemExpDate" class=""> <?php echo lang("EXP DAT") ?> </label>
+                                    <select class="form-select" id="itemExpDate" required>
+                                        <option  value="" selected disabled>---- -- --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 offset-lg-10 col-md-3 offset-md-9">
+                                <input type="submit" id="insert-order-item" class="btn btn-primary w-100 fw-bold"value="<?php echo lang("INS ITE") ?>">
+                            </div>
+                        </form>
+                    </section>
+                    
+                    <section class="order-items-section mb-4">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <section class="d-flex flex-wrap">
+                                    <div class="col-12 col-lg-6 mx-0 d-inline-flex">
+                                        <div class="p-2 col-4">
+                                            <a class="btn btn-secondary col-12"><i class="fa fa-arrow-left"></i> Back</a>
+                                        </div>
+                                        <div class="p-2 col-4">
+                                            <a data-selected-item-id="" id="edit-Qty-btn" class="btn btn-secondary col-12"><i class = 'fa fa-edit'></i> <?php echo lang('EDI QUA') ?></a>
+                                        </div>
+                                        <div id="trash-item-cont" class="p-2 col-4">    
+                                            <a data-selected-item-id="" id="remove-item-btn" class="btn btn-secondary col-12"><i class = 'fa fa-trash'></i> <?php echo lang('REM ITE') ?></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mx-0 d-inline-flex">
+                                        <div id="hide-item-cont" class="p-2 col-4">
+                                            <a id="empty-invoice-btn" class="btn btn-secondary col-12" data-confirm-msg="empty_invoice_confirm_msg"><i class="fa fa-ban"></i> <?php echo lang("EMP INV") ?></a>
+                                        </div>
+                                        <div class=" col-4 col-sm-3"></div>
+                                        <div class="col-4 col-sm-5 d-flex justify-content-end">
+                                            <label id="" class="lh-xl mx-2">Invoice NO. </label>
+                                            <input type="text" id="invoice-num" class="form-control w-auto h-min-cont text-center point-none" size="2" value="15">
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive items-manage-table fs-7">
+                                    <table class="main-table items-table table table-bordered mb-0 text-center">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th></th>
+                                                <th><?php echo lang("ITE NO") ?></th>
+                                                <th><?php echo lang("ITE NAM") ?></th>
+                                                <th><?php echo lang("ITE PRI") ?></th>
+                                                <th><?php echo lang("QUANTITY") ?></th>
+                                                <th title="<?php echo lang("TOT ITE PRI") ?>"><?php echo lang("TOT PRI") ?></th>
+                                                <th title="<?php echo lang("EXP DAT") ?>"><?php echo lang("EXP DATE") ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="items-info">
+                                            <tr>
+                                                <td class='select-item-td'><input type='radio' name='selectItem' class='select-item' value='1730'></td>
+                                                <td>996</td>
+                                                <td><a class='text-decoration-none link-costum-dark' target='blank' title='More Info.' href='?do=info&ID=1730'><b>L-CARNITINE 500MG 30CAP/RITO</b></a></td>
+                                                <td>19</td>
+                                                <td>25.371</td>
+                                                <td>0000-00-00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class='select-item-td'><input type='radio' name='selectItem' class='select-item' value='1729'></td>
+                                                <td>995</td>
+                                                <td><a class='text-decoration-none link-costum-dark' target='blank' title='More Info.' href='?do=info&ID=1729'><b>LADY EXTRA 30CAP/AUS</b></a></td>
+                                                <td>1</td>
+                                                <td>115.5</td>
+                                                <td>0000-00-00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class='select-item-td'><input type='radio' name='selectItem' class='select-item' value='1730'></td>
+                                                <td>996</td>
+                                                <td><a class='text-decoration-none link-costum-dark' target='blank' title='More Info.' href='?do=info&ID=1730'><b>L-CARNITINE 500MG 30CAP/RITO</b></a></td>
+                                                <td>19</td>
+                                                <td>25.371</td>
+                                                <td>0000-00-00</td></tr>
+                                            <tr>
+                                                <td class='select-item-td'><input type='radio' name='selectItem' class='select-item' value='1729'></td>
+                                                <td>995</td>
+                                                <td><a class='text-decoration-none link-costum-dark' target='blank' title='More Info.' href='?do=info&ID=1729'><b>LADY EXTRA 30CAP/AUS</b></a></td>
+                                                <td>1</td>
+                                                <td>115.5</td>
+                                                <td>0000-00-00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class='select-item-td'><input type='radio' name='selectItem' class='select-item' value='1730'></td>
+                                                <td>996</td>
+                                                <td><a class='text-decoration-none link-costum-dark' target='blank' title='More Info.' href='?do=info&ID=1730'><b>L-CARNITINE 500MG 30CAP/RITO</b></a></td>
+                                                <td>19</td>
+                                                <td>25.371</td>
+                                                <td>0000-00-00</td></tr>
+                                            <tr>
+                                                <td class='select-item-td'><input type='radio' name='selectItem' class='select-item' value='1729'></td>
+                                                <td>995</td>
+                                                <td><a class='text-decoration-none link-costum-dark' target='blank' title='More Info.' href='?do=info&ID=1729'><b>LADY EXTRA 30CAP/AUS</b></a></td>
+                                                <td>1</td>
+                                                <td>115.5</td>
+                                                <td>0000-00-00</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><?php echo lang("TOTAL") ?> : </td>
+                                                <td><span id='order-total'>2025</span> <?php echo lang("L.D") ?> </td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div id="save-invoice-cont" class="p-2 col-4 offset-8 col-lg-2 offset-lg-10">
+                                        <a id="save-invoice-btn" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#saveInvoiceModal"><b><?php echo lang("SAV INV") ?></b></a>
+                                    </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <!-- Modal -->
+            <div class="modal fade" id="saveInvoiceModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="saveInvoiceModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php echo lang("RES EMA ADD") ?></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> -->
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                        <div class="">
+                            <h5 class="col-form-label"> <?php echo langTXT("DO YOU WAN JUS") ?> ? </h5>
+                        </div>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" id="save-send-request" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#alertModal" class="btn btn-primary"><?php echo lang("SAV AND REQ") ?></button>
+                            <button type="button" id="save-invoice-only" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#alertModal" class="btn btn-primary"><?php echo lang("SAV ONL") ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <!-- <div id="myConfirm-main-cont" class="myConfirm-overlay-background">
+                <div class="myConfirm-modal">
+                    <div class="myConfirm-modal-header">
+                        <button class="btn btn-close mb-1" data-myConfirm-close="close"></button>
+                    </div>
+                    <div class="myConfirm-msg-cont my-1">
+                        <h5 id="myConfirm-msg" class="col-form-label">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil beatae, fugiat libero expedita architecto ?</h5>
+                    </div>
+                    <hr>
+                    <div class="myConfirm-btn-cont col-5 offset-7 mt-1">
+                        <button id="myConfirm-no" class="btn btn-secondary col-5 offset-1" data-myConfirm-close="close">لا</button>
+                        <button id="myConfirm-yes" class="btn btn-primary col-5" data-myConfirm-close="close">نعم</button>
+                    </div>
+                </div>
+            </div> -->

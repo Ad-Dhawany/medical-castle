@@ -1,0 +1,61 @@
+<form action="#" method="POST" data-session="add-item" class="form row g-1">
+                            <div class="form-group form-group-lg row mb-2 justify-content-center">
+                                <!-- <label class="col-sm-2 control-label"></label> -->
+                                <div class="input-field col-sm-12 col-md-10">
+                                    <input type="number" id="" name="" class="form-control" placeholder="<?php echo lang('ITE NUM'); ?>">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg row mb-2 justify-content-center">
+                                <!-- <label class="col-sm-2 control-label"></label> -->
+                                <div class="input-field col-sm-12 col-md-10">
+                                    <input type="text" name="username" class="form-control" placeholder="<?php echo lang('ITE NAM') ?>" pattern="^[ء-يa-zA-Z]+([ء-يa-zA-Z'.0-9]){3,20}$" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg row mb-2 justify-content-center">
+                                <!-- <label class="col-sm-2 control-label"></label> -->
+                                <div class="input-field col-sm-12 col-md-5 me-md-1 mb-sm-2 mb-lg-0">
+                                    <input type="number" name="" class="form-control" placeholder="<?php echo lang('LAS PUR PRI') ?>" required="required">
+                                </div>
+                                <!-- <label class="col-sm-2 control-label"></label> -->
+                                <div class="input-field col-sm-12 col-md-5">
+                                    <input type="number" name="" class="form-control" placeholder="<?php echo lang("AVR PUR PRI") ?>" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg row mb-2 justify-content-center">
+                                <!-- <label class="col-sm-2 control-label"></label> -->
+                                <div class="input-field col-sm-12 col-md-5 me-md-1 mb-sm-2 mb-lg-0">
+                                    <input type="number" name="" class="form-control" placeholder="<?php echo lang('SAL PRI') ?>" required="required">
+                                </div>
+                                <!-- <label class="col-sm-2 control-label"></label> -->
+                                <div class="input-field col-sm-12 col-md-5">
+                                    <input type="number" id="" data-pass="" name="" class="form-control" placeholder="<?php echo lang('QUANTITY'); ?>" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg row mb-2 justify-content-center">
+                                <div class="input-field col-sm-12 col-md-5 me-md-1 mb-sm-2 mb-lg-0 d-inline-flex">
+                                    <label class="col-sm-4 me-md-1 control-label"><?php echo lang('EXP DAT'); ?></label>
+                                    <div class="input-field col-sm-12 col-md-8">
+                                        <input type="date" name="" class="form-control" placeholder="<?php echo lang('EXP DAT'); ?>" required="required">
+                                    </div>
+                                </div>
+                                <div class="input-field col-sm-12 col-md-5">
+                                    <label class="col-sm-3 control-label"><?php echo lang('VISIBILITY'); ?></label>
+                                    <div class="input-field col-sm-9 col-md-9">
+                                            <div class = "form-check-inline">
+                                                <input id="vis-vis" type="radio" name="visibility" value="visibile" />
+                                                <label for="vis-vis"><?php echo lang('VISIBILE'); ?></label>
+                                            </div>
+                                            <div class = "form-check-inline">
+                                                <input id="vis-hide" type="radio" name="visibility" value="hidden" />
+                                                <label for="vis-hide"><?php echo lang('HIDDEN'); ?></label>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg row mb-2 col-md-11 col-sm-12 justify-content-end">
+                            <!-- <label class="col-2"></label> -->
+                                <div class="w-max-cont">
+                                    <input type="submit" class="btn btn-primary btn-lg" value= "+ <?php echo lang('ADD ITE'); ?>">
+                                </div>
+                            </div>
+                        </form>

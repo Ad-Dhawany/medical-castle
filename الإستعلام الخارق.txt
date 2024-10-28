@@ -1,0 +1,53 @@
+SELECT alln.*, us.userName AS recipientName FROM (SELECT stage1.*, us.userName AS launcherName FROM ((SELECT sn.`isRead`, sn.`noteID`, sn.`launcherID`, sn.`recipientID`, sn.`type`, sn.`referenceID`, sn.`createdDate`, 'specific' AS noteGroup FROM `specific_notifications` sn ) UNION ALL (SELECT bnr.readerID, bn.`noteID`, bn.`launcherID`, bn.`recipients` recipientID, bn.`type`, bn.`referenceID`, bn.`createdDate` , 'broad' FROM `broad_notifications_readers` bnr RIGHT JOIN broad_notifications bn USING(noteID))) stage1 LEFT JOIN `users` us ON stage1.`launcherID` = us.`userID`) alln LEFT JOIN `users` us ON alln.`recipientID` = us.`userID`; 
+
+
+
+/****/
+/****/
+
+
+SELECT alln.*, us.userName AS recipientName FROM (SELECT stage1.*, us.userName AS launcherName FROM ((SELECT sn.`isRead`, sn.`noteID`, sn.`launcherID`, sn.`recipientID`, sn.`type`, sn.`referenceID`, sn.`createdDate`, 'specific' AS noteGroup FROM `specific_notifications` sn )
+                                              UNION ALL
+                    (SELECT bnr.readerID, bn.`noteID`, bn.`launcherID`, bn.`recipients` recipientID, bn.`type`, bn.`referenceID`, bn.`createdDate` , 'broad' FROM `broad_notifications_readers` bnr
+                     RIGHT JOIN broad_notifications bn USING(noteID))) stage1
+                                                  LEFT JOIN `users` us ON stage1.`launcherID` = us.`userID`) alln
+                                                  LEFT JOIN  `users` us ON alln.`recipientID` = us.`userID` ;
+
+
+
+
+SELECT an1.`noteID`, an1.`launcherID`, an1.`recipientID`, an1.`type`, an1.`importance`, an1.`referenceID`, an1.`createdDate`, an1.`noteGroup`, an1.`launcherName`, an1.`recipientName`, MAX(`readORnot`) AS `isRead`
+		FROM (SELECT *, (CASE 
+					WHEN `readersID` = 3 THEN 1
+                    WHEN `readersID` = 1 AND `noteGroup` = 'specific' THEN 1
+                    WHEN `readersID` = 0 THEN 0
+                    WHEN `readersID` IS NULL THEN 0
+                    ELSE -1
+               END) AS `readORnot`
+         	FROM `all_notifications`
+         	WHERE `recipientID` = 3  OR  `recipientID` = 0) an1
+      GROUP BY `noteID`,`noteGroup`
+
+
+
+
+
+         SELECT an.* FROM (SELECT *, (CASE 
+					WHEN `readersID` = 1 THEN 1
+                    WHEN `readersID` = 1 THEN 1
+                    WHEN `readersID` = 0 THEN 0
+                    WHEN `readersID` IS NULL THEN 0
+                    ELSE -1
+               END) AS `isRead`
+         FROM `all_notifications`
+         WHERE (`recipientID` = 1  OR  `recipientID` = 0)) an  WHERE `isRead` = (SELECT MAX(`isRead`) FROM (SELECT *, (CASE 
+					WHEN `readersID` = 1 THEN 1
+                    WHEN `readersID` = 1 THEN 1
+                    WHEN `readersID` = 0 THEN 0
+                    WHEN `readersID` IS NULL THEN 0
+                    ELSE -1
+               END) AS `isRead`
+         FROM `all_notifications`
+         WHERE (`recipientID` = 1  OR  `recipientID` = 0)) an2 WHERE (an2.`recipientID` = an.`recipientID`  AND an2.`noteID` = an.`noteID`) ) GROUP BY `noteID`, `noteGroup` ,`isRead`
+        
+         
